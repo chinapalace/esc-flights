@@ -46,7 +46,7 @@ class Sidebar extends Component {
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2016 Created by Ant UED
+            ESC Flights ©2018 Created by Justin, Ally, and Connor
           </Footer>
         </Layout>
       </Layout>
