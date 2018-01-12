@@ -76,7 +76,6 @@ class TimeRelatedForm extends Component {
     };
     return (
       <Layout>
-        <Header />
         <Content>
           <Form layout="vertical" onSubmit={this.handleSubmit}>
             <FormItem {...formItemLayout} label="Destination Details">

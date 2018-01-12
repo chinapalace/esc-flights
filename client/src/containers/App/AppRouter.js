@@ -9,8 +9,13 @@ class AppRouter extends Component {
         <Switch>
           <Route
             exact
-            path={`/`}
+            path={`/hi`}
             component={asyncComponent(() => import('../Hi/Hi'))}
+          />
+          <Route
+            exact
+            path={`/bye`}
+            component={asyncComponent(() => import('../Bye/Bye'))}
           />
         </Switch>
       </BrowserRouter>
