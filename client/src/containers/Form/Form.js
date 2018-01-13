@@ -4,7 +4,6 @@ import {
   Form,
   DatePicker,
   TimePicker,
-  Button,
   Icon,
   Input,
   Row,
@@ -12,7 +11,7 @@ import {
   Select,
   Slider
 } from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
+const {Footer, Content } = Layout;
 
 const FormItem = Form.Item;
 const MonthPicker = DatePicker.MonthPicker;
@@ -76,7 +75,8 @@ class TimeRelatedForm extends Component {
     };
     return (
       <Layout>
-        <Content>
+        <h1 style={{ textAlign: 'center', padding: '20px' }}>ESC Flights</h1>
+        <Content style={{ padding: '40px 20px' }}>
           <Form layout="vertical" onSubmit={this.handleSubmit}>
             <FormItem {...formItemLayout} label="Destination Details">
               {getFieldDecorator('departure', {

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import AppRouter from './AppRouter';
-import { Layout, Icon, Menu } from 'antd';
+import { Layout, Icon } from 'antd';
 import Sidebar from '../Sidebar/Sidebar';
-import TimeForm from '../Form/Form';
 import './App.css';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/actions';
 
-const { Header, Content, Footer, Sider } = Layout;
-export default class App extends Component {
+const { Header, Content } = Layout;
+export class App extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+
   state = {
     collapsed: false
   };
@@ -15,18 +20,11 @@ export default class App extends Component {
       collapsed: !this.state.collapsed
     });
   };
+
   render() {
     return (
       <Layout style={{ flexDirection: 'row', overflowX: 'hidden' }}>
-        <Sider
-          trigger={null}
-          collapsible
-          collapsed={this.state.collapsed}
-          width="440"
-          style={{ backgroundColor: '#f0f2f5' }}
-        >
-          <TimeForm />
-        </Sider>
+        <Sidebar collapsed={this.state.collapsed} />
 
         <Layout
           style={{
@@ -56,3 +54,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default connect(null, actions)(App);

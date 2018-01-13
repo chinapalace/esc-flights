@@ -1,27 +1,42 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Layout } from 'antd';
 
 import TimeForm from '../Form/Form';
+import Login from '../Login/Login';
+import Logout from '../Login/Logout';
 
 const { Sider } = Layout;
 
 class Sidebar extends Component {
+  renderContent() {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return <Login />;
+
+      default:
+        return <Logout />;
+    }
+  }
   render() {
     return (
       <Sider
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0
-        }}
+        trigger={null}
+        collapsible
+        collapsed={this.props.collapsed}
         width="440"
+        style={{ backgroundColor: '#f0f2f5' }}
       >
-        <div className="logo" />
         <TimeForm />
+        {this.renderContent()}
       </Sider>
     );
   }
 }
 
-export default Sidebar;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+export default connect(mapStateToProps)(Sidebar);
