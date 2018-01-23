@@ -1,15 +1,24 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import AppRouter from './AppRouter';
-import { Layout, Icon } from 'antd';
+import AnimateRouter from './AnimateRouter';
+import AnimateRouter2 from './AnimateRouter2';
+import SwitchRouter from './SwitchAnimate'
+import {Layout, Icon} from 'antd';
 import Sidebar from '../Sidebar/Sidebar';
 import './App.css';
-import { connect } from 'react-redux';
+import '../../index.css';
+import {connect} from 'react-redux';
 import * as actions from '../../redux/actions';
+import {BrowserRouter} from 'react-router-dom';
+import DashAppHolder from './appHolder';
+import AnimationExample from './animate3'
 
-const { Header, Content } = Layout;
+const {Header, Content} = Layout;
 export class App extends Component {
   componentDidMount() {
-    this.props.fetchUser();
+    this
+      .props
+      .fetchUser();
   }
 
   state = {
@@ -23,34 +32,44 @@ export class App extends Component {
 
   render() {
     return (
-      <Layout style={{ flexDirection: 'row', overflowX: 'hidden' }}>
-        <Sidebar collapsed={this.state.collapsed} />
-
+      <DashAppHolder>
         <Layout
           style={{
+          flexDirection: 'row',
+          overflowX: 'hidden'
+        }}>
+          <Sidebar collapsed={this.state.collapsed}/>
+
+          <Layout style={{
             height: '100vh'
-          }}
-        >
-          <Header style={{ background: '#fff', padding: 0 }}>
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
-            />
-          </Header>
-          <Content
-            style={{
+          }}>
+            <Header
+              style={{
+              background: '#fff',
+              padding: 0
+            }}>
+              <Icon
+                className="trigger"
+                type={this.state.collapsed
+                ? 'menu-unfold'
+                : 'menu-fold'}
+                onClick={this.toggle}/>
+            </Header>
+            <Content
+              style={{
               textAlign: 'center',
               margin: '0',
               padding: 0,
               background: '#fff',
               minHeight: 280
-            }}
-          >
-            <AppRouter />
-          </Content>
+            }}>
+              <BrowserRouter>
+                <AppRouter/>
+              </BrowserRouter>
+            </Content>
+          </Layout>
         </Layout>
-      </Layout>
+      </DashAppHolder>
     );
   }
 }

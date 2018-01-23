@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Layout } from 'antd';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Layout} from 'antd';
 
+import Search from '../Search/Search'
 import TimeForm from '../Form/Form';
 import Login from '../Login/Login';
 import Logout from '../Login/Logout';
+import Form from '../Form/Form';
 
-const { Sider } = Layout;
+const {Sider} = Layout;
 
 class Sidebar extends Component {
   renderContent() {
@@ -14,10 +16,10 @@ class Sidebar extends Component {
       case null:
         return;
       case false:
-        return <Login />;
+        return <Login/>;
 
       default:
-        return <Logout />;
+        return <Logout/>;
     }
   }
   render() {
@@ -27,16 +29,16 @@ class Sidebar extends Component {
         collapsible
         collapsed={this.props.collapsed}
         width="440"
-        style={{ backgroundColor: '#f0f2f5' }}
-      >
-        <TimeForm />
-        {this.renderContent()}
+        style={{
+        backgroundColor: '#f0f2f5'
+      }}>
+        <Search/> {this.renderContent()}
       </Sider>
     );
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({auth}) {
+  return {auth};
 }
 export default connect(mapStateToProps)(Sidebar);

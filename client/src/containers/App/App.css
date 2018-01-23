@@ -1,1 +1,9 @@
 @import '~antd/dist/antd.css';
+
+.route-wrapper {
+  position: relative;
+}
+
+.route-wrapper > div {
+  position: absolute;
+}
