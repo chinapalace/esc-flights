@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { normalize, schema } from 'normalizr';
+
 
 const farePortal = {
 
@@ -15,12 +17,22 @@ const farePortal = {
     return axios
       .post(encodedURI, body, headers)
       .then(function (response) {
-
+        console.log("response", response)
         const priceArrayUnsort = response.data.FlightResponse.FpSearch_AirLowFaresRS.SegmentReference.RefDetails;
         const flightArrayOutUnsort = response.data.FlightResponse.FpSearch_AirLowFaresRS.OriginDestinationOptions.OutBoundOptions.OutBoundOption;
+        const airlineCode = response.data.FlightResponse.FpSearch_AirLowFaresRS.OriginDestinationOptions.OutBoundOptions.OutBoundOption;
+        const code = airlineCode.map(e => e.FlightSegment[0].MarketingAirline.Code);
+        console.log("airlineCode", airlineCode);
+        console.log("code", code);
+
+        const flight = new schema.Entity('flight')
 
 
-        const mergedData = [priceArrayUnsort, flightArrayOutUnsort].reduce((a, b) => a.map((c, i) => Object.assign({}, c, b[i])));
+        const mergedData = [priceArrayUnsort, flightArrayOutUnsort]
+          .reduce((a, b) => {
+            return a.map((c, i) => Object.assign({}, c, b[i]))
+          });
+
         console.log("mergedData", mergedData);
 
         //loop through each array the data paths run into.

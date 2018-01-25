@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Switch, Route, BrowserRouter, Link, withRouter} from 'react-router-dom';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import React, { Component } from 'react';
+import { Switch, Route, BrowserRouter, Link, withRouter } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import asyncComponent from '../../helpers/AsyncFunc';
 import PageShell from '../Animation/PageShell'
 
@@ -12,15 +12,15 @@ class AppRouter extends Component {
           <Route
             exact
             path={`/hi`}
-            component={asyncComponent(() => import ('../Hi/Hi'))}/>
+            component={asyncComponent(() => import('../Hi/Hi'))} />
           <Route
             exact
             path={`/bye`}
-            component={asyncComponent(() => import ('../Bye/Bye'))}/>
+            component={asyncComponent(() => import('../Bye/Bye'))} />
           <Route
             exact
             path={`/flightsList`}
-            component={asyncComponent(() => import ('../FlightsList/FlightsList'))}/>
+            component={asyncComponent(() => import('../FlightsList/FlightsList'))} />
         </Switch>
       </BrowserRouter>
     );
