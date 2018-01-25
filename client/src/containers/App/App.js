@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AppRouter from './AppRouter';
 import AnimateRouter from './AnimateRouter';
 import AnimateRouter2 from './AnimateRouter2';
 import SwitchRouter from './SwitchAnimate'
-import {Layout, Icon} from 'antd';
+import { Layout, Icon } from 'antd';
 import Sidebar from '../Sidebar/Sidebar';
 import './App.css';
 import '../../index.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import DashAppHolder from './appHolder';
 import AnimationExample from './animate3'
 
-const {Header, Content} = Layout;
+const { Header, Content } = Layout;
 export class App extends Component {
   componentDidMount() {
     this
@@ -35,36 +35,31 @@ export class App extends Component {
       <DashAppHolder>
         <Layout
           style={{
-          flexDirection: 'row',
-          overflowX: 'hidden'
-        }}>
-          <Sidebar collapsed={this.state.collapsed}/>
+            flexDirection: 'row',
+            overflowX: 'hidden'
+          }}>
+          <Sidebar />
 
           <Layout style={{
             height: '100vh'
           }}>
             <Header
               style={{
-              background: '#fff',
-              padding: 0
-            }}>
-              <Icon
-                className="trigger"
-                type={this.state.collapsed
-                ? 'menu-unfold'
-                : 'menu-fold'}
-                onClick={this.toggle}/>
+                background: '#fff',
+                padding: 0
+              }}>
+
             </Header>
             <Content
               style={{
-              textAlign: 'center',
-              margin: '0',
-              padding: 0,
-              background: '#fff',
-              minHeight: 280
-            }}>
+                textAlign: 'center',
+                margin: '0',
+                padding: 0,
+                background: '#fff',
+                minHeight: 280
+              }}>
               <BrowserRouter>
-                <AppRouter/>
+                <AppRouter />
               </BrowserRouter>
             </Content>
           </Layout>

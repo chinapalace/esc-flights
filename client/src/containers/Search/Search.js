@@ -6,14 +6,34 @@ import {
   Row,
   Col,
   Input,
-  DatePicker,
-  Select,
   InputNumber
 } from 'antd';
+import TextField from 'material-ui/TextField';
+import { MenuItem } from 'material-ui/Menu';
+import Select from 'material-ui/Select';
+import { withStyles } from 'material-ui/styles';
 
 import { fetchFlights } from '../../redux/actions/index'
+import Collapse from '../../components/uielements/collapse'
 
 const Option = Select.Option;
+
+const d = new Date();
+const date = d.getFullYear() + "-" + ("0" + d.getMonth() + 1).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+console.log(date);
+
+
+function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+const styles = () => ({
+  textField: {
+    marginRight: 50,
+    marginTop: 500,
+  },
+})
 
 class Search extends Component {
   constructor(props) {
@@ -22,10 +42,10 @@ class Search extends Component {
     this.state = {
       origin: '',
       destination: '',
-      departureDate: moment(),
+      departureDate: date,
       returnDate: moment(),
       classOfService: 'ECONOMY',
-      passengers: 1
+      passengers: '1'
     }
 
     this.onInputChange = this
@@ -55,7 +75,7 @@ class Search extends Component {
     this.setState({ [name]: event.target.value })
   }
 
-  onDateChange(date, dateString) {
+  onDateChange(defaultValue) {
     this.setState({ departureDate: date })
   }
 
@@ -69,7 +89,7 @@ class Search extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-    console.log(this.state.destination, this.state.origin, (this.state.departureDate).format("YYYY-MM-DD"), this.state.classOfService, this.state.passengers)
+
     const request = {
       "FlightSearchRequest": {
         "Adults": this.state.passengers,
@@ -88,7 +108,7 @@ class Search extends Component {
           {
             "Origin": this.state.origin,
             "Destination": this.state.destination,
-            "DepartureDate": (this.state.departureDate).format("YYYY-MM-DD"),
+            "DepartureDate": (this.state.departureDate),
             "DepartureTime": "1100"
           }
         ]
@@ -103,53 +123,89 @@ class Search extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
-        <Row type="flex" justify="center">
-          <h1>ESC Flights</h1>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={20}>
-            <p>Origin</p>
-            <Input name="origin" value={this.state.origin} onChange={this.onInputChange} />
-          </Col>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={20}>
-            <p>Destination</p>
-            <Input
-              name="destination"
-              value={this.state.destination}
-              onChange={this.onInputChange} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={10}>
-            <DatePicker
-              name="departureDate"
-              value={this.state.departureDate}
-              onChange={this.onDateChange} />
+      <Row>
+        <Col span={24}>
+          <form onSubmit={this.onFormSubmit} autoComplete="off">
+            <div>
+              <br />
+            </div>
+            <Row type="flex" justify="center">
+              <h1>ESC Flights</h1>
+            </Row>
+            <div>
 
-          </Col>
-          <Col span={10}>
-            <Select
-              defaultValue="ECONOMY"
-              onChange={this.onClassChange}
-              name="classOfService">
-              <Option value='ECONOMY'>Economy</Option>
-              <Option value='PREMIUMECONOMY'>Premium Economy</Option>
-              <Option value='BUSINESS'>Business</Option>
-              <Option value='FIRST'>First</Option>
-            </Select>
-            <InputNumber
-              min={1}
-              max={10}
-              defaultValue={1}
-              onChange={this.onPassengerChange} />
-          </Col>
-        </Row>
-        <button type="submit">Submit</button>
-      </form>
+              <br />
+              <br />
+            </div>
+            <Row type="flex" justify="center">
+              <Col span={20}>
+                <p>Destination Details</p>
+                <TextField
+                  fullWidth
+                  name="origin"
+                  value={this.state.origin}
+                  onChange={this.onInputChange} />
+              </Col>
+            </Row>
+            <div><br /></div>
 
+            <Row type="flex" justify="center">
+              <Col span={20}>
+                <TextField
+                  fullWidth
+                  name="destination"
+                  value={this.state.destination}
+                  onChange={this.onInputChange} />
+              </Col>
+            </Row>
+            <div>
+              <br />
+              <br />
+              <br />
+            </div>
+            <Row type="flex" justify="center">
+              <Col span={10}>
+                <p>Travel Dates</p>
+                <TextField
+                  type="date"
+                  name="departureDate"
+                  value={this.state.departureDate}
+                  onChange={this.onInputChange} />
+
+              </Col>
+              <Col span={10}>
+                <p>Passenger Details</p>
+                <Select
+                  fullWidth
+                  onChange={this.onInputChange}
+                  name="classOfService"
+                  value={this.state.classOfService}>
+                  <MenuItem value='ECONOMY'>Economy</MenuItem>
+                  <MenuItem value='PREMIUMECONOMY'>Premium Economy</MenuItem>
+                  <MenuItem value='BUSINESS'>Business</MenuItem>
+                  <MenuItem value='FIRST'>First</MenuItem>
+                </Select>
+                <Select
+                  fullWidth
+                  onChange={this.onInputChange}
+                  name="passengers"
+                  value={this.state.passengers}>
+                  <MenuItem value='1'>1 Adult</MenuItem>
+                  <MenuItem value='2'>2 Adults</MenuItem>
+                  <MenuItem value='3'>3 Adults</MenuItem>
+                  <MenuItem value='4'>4 Adults</MenuItem>
+                </Select>
+              </Col>
+            </Row>
+            <Row>
+              <Col offset={2}>
+                <button type="submit">Submit</button>
+              </Col>
+            </Row>
+          </form>
+
+        </Col>
+      </Row>
     )
   }
 }
@@ -160,4 +216,5 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Search);
+const WrappedSearch = withStyles(styles)(Search)
+export default connect(null, mapDispatchToProps)(WrappedSearch);

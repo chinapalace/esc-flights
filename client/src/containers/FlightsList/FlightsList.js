@@ -26,6 +26,7 @@ class FlightsList extends Component {
           <div>{flight.PTC_FareBreakdown.Adult.TotalAdultFare}</div>
           <div><Icon icon={flight.FlightSegment[0].OperatedByAirline.CompanyText} /></div>
           <div>
+
             <p>Total Time</p>
             {flight.FlightSegment[0].FlightDuration}
           </div>
@@ -37,15 +38,20 @@ class FlightsList extends Component {
 
     return (
       <div>
-        {this.renderFlights()}
+        <div>
+          <h1>Hi {this.props.auth.name}</h1>
+          <h3>Here are the results based on your filters</h3>
+        </div>
+        <div>
+          {this.renderFlights()}
+        </div>
       </div>
-
     )
   }
 }
 
-function mapStateToProps({ flights }) {
-  return { flights }
+function mapStateToProps({ flights, auth }) {
+  return { flights, auth }
 }
 
 export default connect(mapStateToProps)(FlightsList);

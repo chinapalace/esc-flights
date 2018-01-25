@@ -6,7 +6,7 @@ class Login extends Component {
     return (
       <div>
         <Button href="/auth/google" type="primary">
-          Login with Google
+          Login
         </Button>
       </div>
     );
