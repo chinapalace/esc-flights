@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
 import FullWidthTabs from '../Search/Tab';
@@ -31,7 +32,7 @@ class Sidebar extends Component {
           backgroundColor: "rgb(255, 255, 255)",
         }}>
         <div className="esc-logo"><span></span>ESC Flights</div>
-        <FullWidthTabs />
+        <FullWidthTabs location={this.props.location} />
         {this.renderContent()}
       </Sider>
     );
@@ -41,4 +42,4 @@ class Sidebar extends Component {
 function mapStateToProps({ auth }) {
   return { auth };
 }
-export default connect(mapStateToProps)(Sidebar);
+export default withRouter(connect(mapStateToProps)(Sidebar));

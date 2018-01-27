@@ -47,6 +47,7 @@ class FullWidthTabs extends React.Component {
           indicatorColor="primary"
           textColor="primary"
           fullWidth
+          style={{ boxShadow: ' 0 6px 3px -3px rgba(0,0,0,0.2)' }}
 
         >
           <Tab label="Round Trip" />
@@ -59,9 +60,9 @@ class FullWidthTabs extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}><Search /></TabContainer>
-          <TabContainer dir={theme.direction}><Search /></TabContainer>
-          <TabContainer dir={theme.direction}><Search /></TabContainer>
+          <TabContainer dir={theme.direction}><Search location={this.props.location} /></TabContainer>
+          <TabContainer dir={theme.direction}><Search location={this.props.location} /></TabContainer>
+          <TabContainer dir={theme.direction}><Search location={this.props.location} /></TabContainer>
         </SwipeableViews>
       </div>
     );

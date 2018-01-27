@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter, BrowserRouter } from 'react-router-dom';
 import moment from 'moment';
 import {
   Row,
@@ -92,7 +93,7 @@ class Search extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-
+    this.props.history.push('/flights-list');
     const request = {
       "FlightSearchRequest": {
         "Adults": this.state.passengers,
@@ -138,17 +139,18 @@ class Search extends Component {
           </div>
 
           <p>Destination Details</p>
-          <TextField
-            fullWidth
-            name="origin"
-            value={this.state.origin}
-            onChange={this.onInputChange} />
-
-          <div><br /></div>
-
-          <div>
+          <div className="destination-details">
+            <i style={{ margin: '30px 20px 0 0' }} className="material-icons md-dark md-inactive">flight_takeoff</i>
             <TextField
-              fullWidth
+              style={{ width: 300 }}
+              name="origin"
+              value={this.state.origin}
+              onChange={this.onInputChange} />
+          </div>
+          <div className="destination-details">
+            <i style={{ margin: '20px 20px 0 0' }} className="material-icons md-dark md-inactive">flight_land</i>
+            <TextField
+              style={{ width: 300 }}
               name="destination"
               value={this.state.destination}
               onChange={this.onInputChange} />
@@ -210,4 +212,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 const WrappedSearch = withStyles(styles)(Search)
-export default connect(null, mapDispatchToProps)(WrappedSearch);
+export default withRouter(connect(null, mapDispatchToProps)(WrappedSearch));

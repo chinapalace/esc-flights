@@ -9,7 +9,7 @@ import './App.css';
 import '../../index.css';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, withRouter } from 'react-router-dom';
 import DashAppHolder from './appHolder';
 import AnimationExample from './animate3'
 
@@ -38,7 +38,7 @@ export class App extends Component {
             flexDirection: 'row',
             overflowX: 'hidden'
           }}>
-          <Sidebar />
+          <Sidebar location={this.props.location} />
 
           <Layout style={{
             height: '100vh'
@@ -52,9 +52,7 @@ export class App extends Component {
                 background: '#fff',
                 minHeight: 280
               }}>
-              <BrowserRouter>
-                <AppRouter />
-              </BrowserRouter>
+              <AppRouter />
             </Content>
           </Layout>
         </Layout>
@@ -63,4 +61,4 @@ export class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default withRouter(connect(null, actions)(App));
