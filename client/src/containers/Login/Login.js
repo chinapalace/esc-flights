@@ -5,9 +5,9 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Button href="/auth/google" type="primary">
+        <a href="/auth/google" type="primary">
           Login
-        </Button>
+        </a>
       </div>
     );
   }

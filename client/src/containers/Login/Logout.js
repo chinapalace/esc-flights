@@ -5,9 +5,9 @@ class Logout extends Component {
   render() {
     return (
       <div>
-        <Button href="/api/logout" type="primary">
+        <a href="/api/logout" type="primary">
           Logout
-        </Button>
+        </a>
       </div>
     );
   }

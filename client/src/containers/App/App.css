@@ -11,6 +11,12 @@ body {
   position: absolute;
 }
 
+.esc-logo {
+  font-family: Roboto, sans-serif;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
 .flight-list-card {
   display: flex;
   flex-wrap: nowrap;
@@ -128,6 +134,33 @@ align-items: center;
   padding-top: 40px;
 }
 
+.bottom-row {
+  margin-bottom: auto;
+}
+
+.search-wrapper {
+  padding: 20px 20px;
+  display: flex;
+  flex-basis: auto;
+
+}
+
+.search {
+  display: flex !important;
+  flex-direction: column;
+  align-content: space-between !important;
+
+}
+
+.travel-selects {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-button {
+  margin-top: auto;
+  padding: 20px;
+}
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }

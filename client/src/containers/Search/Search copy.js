@@ -15,7 +15,6 @@ import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
 
 import { fetchFlights } from '../../redux/actions/index'
-import FullWidthTabs from './Tab';
 
 
 const Option = Select.Option;
@@ -126,79 +125,89 @@ class Search extends Component {
 
   render() {
     return (
-      <div >
-        <form onSubmit={this.onFormSubmit} autoComplete="off" className="search">
-          <div>
-            <br />
-          </div>
-          <div>
-
-            <br />
-            <br />
-          </div>
-
-          <p>Destination Details</p>
-          <TextField
-            fullWidth
-            name="origin"
-            value={this.state.origin}
-            onChange={this.onInputChange} />
-
-          <div><br /></div>
-
-          <div>
-            <TextField
-              fullWidth
-              name="destination"
-              value={this.state.destination}
-              onChange={this.onInputChange} />
-          </div>
-          <div>
-            <br />
-            <br />
-            <br />
-          </div>
-          <div className="travel-selects">
+      <Row>
+        <Col span={24}>
+          <form onSubmit={this.onFormSubmit} autoComplete="off">
             <div>
-              <p>Travel Dates</p>
-              <TextField
-                type="date"
-                name="departureDate"
-                value={this.state.departureDate}
-                onChange={this.onInputChange} />
+              <br />
             </div>
-            <div className="passenger-details">
-              <p>Passenger Details</p>
-              <Select
-                fullWidth
-                onChange={this.onInputChange}
-                name="classOfService"
-                value={this.state.classOfService}>
-                <MenuItem value='ECONOMY'>Economy</MenuItem>
-                <MenuItem value='PREMIUMECONOMY'>Premium Economy</MenuItem>
-                <MenuItem value='BUSINESS'>Business</MenuItem>
-                <MenuItem value='FIRST'>First</MenuItem>
-              </Select>
-              <Select
-                fullWidth
-                onChange={this.onInputChange}
-                name="passengers"
-                value={this.state.passengers}>
-                <MenuItem value='1'>1 Adult</MenuItem>
-                <MenuItem value='2'>2 Adults</MenuItem>
-                <MenuItem value='3'>3 Adults</MenuItem>
-                <MenuItem value='4'>4 Adults</MenuItem>
-              </Select>
+            <Row type="flex" justify="center">
+              <h1>ESC Flights</h1>
+            </Row>
+            <div>
+
+              <br />
+              <br />
             </div>
-          </div>
+            <Row type="flex" justify="center">
+              <Col span={20}>
+                <p>Destination Details</p>
+                <TextField
+                  fullWidth
+                  name="origin"
+                  value={this.state.origin}
+                  onChange={this.onInputChange} />
+              </Col>
+            </Row>
+            <div><br /></div>
 
-          <div className="search-button">
+            <Row type="flex" justify="center">
+              <Col span={20}>
+                <TextField
+                  fullWidth
+                  name="destination"
+                  value={this.state.destination}
+                  onChange={this.onInputChange} />
+              </Col>
+            </Row>
+            <div>
+              <br />
+              <br />
+              <br />
+            </div>
+            <Row type="flex" justify="center">
+              <Col span={10}>
+                <p>Travel Dates</p>
+                <TextField
+                  type="date"
+                  name="departureDate"
+                  value={this.state.departureDate}
+                  onChange={this.onInputChange} />
 
-            <Button raised color="primary" type="submit">Search</Button>
+              </Col>
+              <Col span={10}>
+                <p>Passenger Details</p>
+                <Select
+                  fullWidth
+                  onChange={this.onInputChange}
+                  name="classOfService"
+                  value={this.state.classOfService}>
+                  <MenuItem value='ECONOMY'>Economy</MenuItem>
+                  <MenuItem value='PREMIUMECONOMY'>Premium Economy</MenuItem>
+                  <MenuItem value='BUSINESS'>Business</MenuItem>
+                  <MenuItem value='FIRST'>First</MenuItem>
+                </Select>
+                <Select
+                  fullWidth
+                  onChange={this.onInputChange}
+                  name="passengers"
+                  value={this.state.passengers}>
+                  <MenuItem value='1'>1 Adult</MenuItem>
+                  <MenuItem value='2'>2 Adults</MenuItem>
+                  <MenuItem value='3'>3 Adults</MenuItem>
+                  <MenuItem value='4'>4 Adults</MenuItem>
+                </Select>
+              </Col>
+            </Row>
+            <Row align="bottom" className="bottom-row">
+              <Col offset={2}>
+                <Button raised color="primary" type="submit">Search</Button>
+              </Col>
+            </Row>
+          </form>
 
-          </div>
-        </form>
-      </div>
+        </Col>
+      </Row>
     )
   }
 }

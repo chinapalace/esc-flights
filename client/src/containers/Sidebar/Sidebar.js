@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
-
-import WrappedSearch from '../Search/Search'
+import FullWidthTabs from '../Search/Tab';
+import WrappedSearch from '../Search/Search';
 import TimeForm from '../Form/Form';
 import Login from '../Login/Login';
 import Logout from '../Login/Logout';
@@ -30,7 +30,8 @@ class Sidebar extends Component {
         style={{
           backgroundColor: "rgb(255, 255, 255)",
         }}>
-        <WrappedSearch />
+        <div className="esc-logo"><span></span>ESC Flights</div>
+        <FullWidthTabs />
         {this.renderContent()}
       </Sider>
     );
