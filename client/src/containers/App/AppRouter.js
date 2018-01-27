@@ -3,7 +3,6 @@ import { Switch, Route, BrowserRouter, Link, withRouter } from 'react-router-dom
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import asyncComponent from '../../helpers/AsyncFunc';
 import PageShell from '../Animation/PageShell';
-import FlightsList from '../FlightsList/FlightsList';
 
 class AppRouter extends Component {
   render() {
@@ -12,7 +11,15 @@ class AppRouter extends Component {
         <Route
           exact
           path={`/flights-list`}
-          component={FlightsList} />
+          component={asyncComponent(() => import('../FlightsList/FlightsList'))} />
+        <Route
+          exact
+          path={`/`}
+          component={asyncComponent(() => import('../Landing/Landing'))} />
+        <Route
+          exact
+          path={`/map`}
+          component={asyncComponent(() => import('../Map/Map'))} />
       </div>
     );
   }

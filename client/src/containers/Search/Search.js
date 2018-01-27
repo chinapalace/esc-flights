@@ -13,6 +13,7 @@ import TextField from 'material-ui/TextField';
 import { MenuItem } from 'material-ui/Menu';
 import Select from 'material-ui/Select';
 import Button from 'material-ui/Button';
+import { InputLabel } from 'material-ui/Input';
 import { withStyles } from 'material-ui/styles';
 
 import { fetchFlights } from '../../redux/actions/index'
@@ -127,30 +128,26 @@ class Search extends Component {
 
   render() {
     return (
-      <div >
+      <div id="search-input" >
         <form onSubmit={this.onFormSubmit} autoComplete="off" className="search">
           <div>
             <br />
           </div>
-          <div>
-
-            <br />
-            <br />
-          </div>
-
           <p>Destination Details</p>
           <div className="destination-details">
-            <i style={{ margin: '30px 20px 0 0' }} className="material-icons md-dark md-inactive">flight_takeoff</i>
+            <i style={{ marginRight: 10 }} className="material-icons md-dark md-inactive">flight_takeoff</i>
             <TextField
-              style={{ width: 300 }}
+              placeholder="Travel from"
+              style={{ width: 337 }}
               name="origin"
               value={this.state.origin}
               onChange={this.onInputChange} />
           </div>
           <div className="destination-details">
-            <i style={{ margin: '20px 20px 0 0' }} className="material-icons md-dark md-inactive">flight_land</i>
+            <i style={{ marginTop: 10, marginRight: 10 }} className="material-icons md-dark md-inactive">flight_land</i>
             <TextField
-              style={{ width: 300 }}
+              placeholder="Travel to"
+              style={{ width: 337, marginTop: 10 }}
               name="destination"
               value={this.state.destination}
               onChange={this.onInputChange} />
@@ -164,6 +161,7 @@ class Search extends Component {
             <div>
               <p>Travel Dates</p>
               <TextField
+                style={{ color: 'grey' }}
                 type="date"
                 name="departureDate"
                 value={this.state.departureDate}
@@ -171,6 +169,7 @@ class Search extends Component {
             </div>
             <div className="passenger-details">
               <p>Passenger Details</p>
+
               <Select
                 fullWidth
                 onChange={this.onInputChange}

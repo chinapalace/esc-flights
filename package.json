@@ -24,6 +24,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-loading-skeleton": "^0.4.0",
     "react-router-transition": "^1.2.0"
   }
 }

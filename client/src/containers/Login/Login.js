@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import Button from 'material-ui/Button';
 
 class Login extends Component {
   render() {
     return (
-      <div>
-        <a href="/auth/google" type="primary">
+      <Button raised color="primary">
+        <a href="/auth/google">
           Login
         </a>
-      </div>
+      </Button>
     );
   }
 }
