@@ -1,6 +1,6 @@
 import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
-import './Carousel.css';
+import './Car.css';
 
 const styles = {
   root: {
@@ -64,7 +64,7 @@ const tilesData = [
 ];
 
 
-const Explore = () => (
+const GridListExampleSingleLine = () => (
   <div style={styles.root}>
     <GridList style={styles.gridList} cols={2.2}>
       {tilesData.map((tile) => (
@@ -76,4 +76,4 @@ const Explore = () => (
   </div>
 );
 
-export default Explore;
+export default GridListExampleSingleLine;

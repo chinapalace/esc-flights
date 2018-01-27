@@ -12,9 +12,9 @@ class FlightsList extends Component {
 
 
   renderGreeting() {
-    if (this.props.flights)
+    if (this.props.flights.length > 0)
       switch (this.props.auth) {
-        case null:
+        case false:
           console.log(this.props.auth)
           return;
         default:

@@ -208,21 +208,23 @@ align-items: center;
 }
 
 #search-input {
-  margin: 5px;
+  margin-top: auto;
   display: flex;
+  height: 70vh;
 }
 
 .travel-selects {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: auto;
 }
 
 .search-button {
   display: flex;
   margin-top: auto;
-  padding:  200px 20px 0;
-  flex-grow: 1;
+  padding:  0 20px 0;
+
 }
 
 .destination-details {
