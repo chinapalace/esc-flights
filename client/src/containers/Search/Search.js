@@ -11,6 +11,7 @@ import {
 import TextField from 'material-ui/TextField';
 import { MenuItem } from 'material-ui/Menu';
 import Select from 'material-ui/Select';
+import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
 
 import { fetchFlights } from '../../redux/actions/index'
@@ -28,6 +29,7 @@ function addDays(date, days) {
   result.setDate(result.getDate() + days);
   return result;
 }
+
 const styles = () => ({
   textField: {
     marginRight: 50,
@@ -199,7 +201,7 @@ class Search extends Component {
             </Row>
             <Row>
               <Col offset={2}>
-                <button type="submit">Submit</button>
+                <Button raised color="primary" type="submit">Search</Button>
               </Col>
             </Row>
           </form>

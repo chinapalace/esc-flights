@@ -1,5 +1,8 @@
 @import '~antd/dist/antd.css';
 
+body {
+  font-family: 'Roboto', 'HelveticaNeue', Arial, Helvetica, sans-serif;
+}
 .route-wrapper {
   position: relative;
 }
@@ -7,3 +10,125 @@
 .route-wrapper > div {
   position: absolute;
 }
+
+.flight-list-card {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.flight-list-card__price {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+  color: rgba(0, 0, 0, 1);  
+  text-align: left;
+}
+
+.flight-list-card__price > h4 {
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 0;
+}
+
+.flight-list-card__dateTime {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.flight-list-card__dateTime > span{
+ margin-bottom: 0;
+ font-weight: 500;
+ font-size: 15px;
+ color: rgba(0, 0, 0, 1);
+}
+
+.flight-list-card__dateTime > p{
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.54);
+ }
+ 
+.flight-list-card__icon {
+display: flex;
+align-items: center;
+}
+
+.flight-list-card__icon > img {
+  margin: 10px;
+  }
+
+.flight-list-card__total-time {
+  display: inline-block;
+}
+
+.flight-list-card__total-time > span{
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.flight-list-card__total-time > p{
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.54);
+}
+.ant-card-body {
+  padding: 16px 24px;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  text-align: left;
+
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#no-margin {
+  margin-bottom: 0;
+}
+
+.top-card {
+  color: white;
+  background-color:rgb(66,134,245);
+}
+
+.small-card {
+  text-align: left;
+  color: white;
+  background-color: rgb(51,103,213);
+}
+
+.bottom-card {
+  background-color: white;
+  color: black;
+}
+
+.toggle {
+  margin-left: auto;
+}
+
+.greeting {
+  padding-top: 40px;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }

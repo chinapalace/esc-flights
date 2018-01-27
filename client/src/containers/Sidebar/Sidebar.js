@@ -28,7 +28,7 @@ class Sidebar extends Component {
 
         width="440"
         style={{
-          backgroundColor: '#f0f2f5'
+          backgroundColor: "rgb(255, 255, 255)",
         }}>
         <WrappedSearch />
         {this.renderContent()}

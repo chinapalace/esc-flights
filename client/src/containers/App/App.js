@@ -43,13 +43,7 @@ export class App extends Component {
           <Layout style={{
             height: '100vh'
           }}>
-            <Header
-              style={{
-                background: '#fff',
-                padding: 0
-              }}>
 
-            </Header>
             <Content
               style={{
                 textAlign: 'center',
