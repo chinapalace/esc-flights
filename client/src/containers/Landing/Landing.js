@@ -4,7 +4,8 @@ import mp4 from '../../images/Cloud_Surf.mp4';
 import webm from '../../images/Cloud_Surf.webm';
 import Login from '../Login/Login';
 import Logout from '../Login/Logout';
-import GridListExampleSingleLine from '../Car/Car.js';
+import Car from '../Car/Car';
+
 
 const styles = {
   root: {
@@ -34,7 +35,9 @@ class Landing extends Component {
   }
   render() {
     return (
+
       <div>
+
         <div className="landing-page">
           <div className="landing-text">
             <span>It's a big world. </span>
@@ -49,6 +52,8 @@ class Landing extends Component {
             Your browser does not support the video tag.
             </video>
         </div>
+
+
       </div>
     )
   }

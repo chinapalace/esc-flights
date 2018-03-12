@@ -1,7 +1,8 @@
-import React from 'react';
-import { GridList, GridTile } from 'material-ui/GridList';
+import React, { Component } from 'react';
+import GridList, { GridListTile } from 'material-ui/GridList';
 import './Car.css';
-
+import Header from './Header';
+import Background from './Background'
 const styles = {
   root: {
     display: 'flex',
@@ -14,7 +15,7 @@ const styles = {
     flexWrap: 'nowrap',
     overflowX: 'auto',
     margin: '20px',
-    height: '290px',
+    height: '100vh',
     width: '74%',
   },
   photos: {
@@ -64,16 +65,25 @@ const tilesData = [
 ];
 
 
-const GridListExampleSingleLine = () => (
-  <div style={styles.root}>
-    <GridList style={styles.gridList} cols={2.2}>
-      {tilesData.map((tile) => (
-        <GridTile style={styles.photos} key={tile.img} >
-          <img src={tile.img} />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-);
+export default class Car extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <div style={styles.root}>
+          <GridList style={styles.gridList} cols={2.2}>
+            {tilesData.map((tile) => (
+              <GridListTile style={styles.photos} key={tile.img} >
+                <img src={tile.img} />
+              </GridListTile>
+            ))}
+            <Background />
+          </GridList>
 
-export default GridListExampleSingleLine;
+        </div>
+
+      </div>
+    );
+  }
+}
+
