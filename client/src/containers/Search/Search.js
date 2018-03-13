@@ -15,6 +15,7 @@ import Select from 'material-ui/Select';
 import Button from 'material-ui/Button';
 import { InputLabel } from 'material-ui/Input';
 import { withStyles } from 'material-ui/styles';
+import SuggestSelect from '../AutoSelect.js'
 
 import { fetchFlights } from '../../redux/actions/index'
 import FullWidthTabs from './Tab';
@@ -32,6 +33,8 @@ function addDays(date, days) {
   result.setDate(result.getDate() + days);
   return result;
 }
+
+
 
 const styles = () => ({
   textField: {
@@ -72,12 +75,28 @@ class Search extends Component {
     this.onPassengerChange = this
       .onPassengerChange
       .bind(this);
+
+    this.onDestChange = this
+      .onDestChange
+      .bind(this);
+
+    this.onDepartChange = this
+      .onDepartChange
+      .bind(this);
   }
 
   onInputChange(event) {
     const target = event.target;
     const name = target.name;
     this.setState({ [name]: event.target.value })
+  }
+
+  onDepartChange(value) {
+    this.setState({ origin: value })
+  }
+
+  onDestChange(value) {
+    this.setState({ destination: value })
   }
 
   onDateChange(defaultValue) {
@@ -126,6 +145,37 @@ class Search extends Component {
       .fetchFlights(request)
   }
 
+  getCodes(input) {
+    if (!input) {
+      return Promise.resolve({
+        options: [
+          { label: 'Delhi', value: 'DEL' },
+          { label: 'Mumbai', value: 'MUM' }
+        ]
+      });
+    }
+    const KEY = '97bfa12f-0eb0-4024-a08b-7983a27a1b0a';
+    const url = 'http://iatacodes.org/api/v6/autocomplete?query=' + input + '&api_key=' + KEY;
+
+    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+
+    return fetch(proxyUrl + url)
+      .then((response) => {
+        return response.json();
+      }).then((json) => {
+        var options = [];
+        json.each(['response']['airports'], (airport) => {
+          options.push({
+            label: airport['name'],
+            value: airport['code']
+          })
+        });
+        console.log(options);
+        return { options: options };
+      });
+  }
+
+
   render() {
     return (
       <div id="search-input" >
@@ -136,21 +186,23 @@ class Search extends Component {
           <p>Destination Details</p>
           <div className="destination-details">
             <i style={{ marginRight: 10 }} className="material-icons md-dark md-inactive">flight_takeoff</i>
-            <TextField
+            <SuggestSelect
               placeholder="Travel from"
               style={{ width: 337 }}
               name="origin"
               value={this.state.origin}
-              onChange={this.onInputChange} />
+              onChange={this.onDepartChange}
+              loadOptions={this.getCodes}
+            />
           </div>
           <div className="destination-details">
             <i style={{ marginTop: 10, marginRight: 10 }} className="material-icons md-dark md-inactive">flight_land</i>
-            <TextField
+            <SuggestSelect
               placeholder="Travel to"
               style={{ width: 337, marginTop: 10 }}
               name="destination"
               value={this.state.destination}
-              onChange={this.onInputChange} />
+              onChange={this.onDestChange} />
           </div>
           <div>
             <br />

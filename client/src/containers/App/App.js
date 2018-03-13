@@ -12,6 +12,7 @@ import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import FAB from '../Button';
 
+
 const { Header, Content } = Layout;
 export class App extends Component {
   componentDidMount() {
@@ -43,16 +44,13 @@ export class App extends Component {
           <Layout style={{
             height: '100vh'
           }}>
-
-            <Affix style={{ position: 'absolute', top: 210, left: 410, zIndex: 1 }}>
-
+            <Affix style={{ position: 'absolute', top: 210, left: 470, zIndex: 1 }}>
               <Button fab color="primary" aria-label="add" >
                 <Link to='/map'>
                   <AddIcon />
                 </Link>
               </Button>
             </Affix>
-
             <Content
               style={{
                 textAlign: 'center',

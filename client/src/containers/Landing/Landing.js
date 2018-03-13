@@ -4,7 +4,7 @@ import mp4 from '../../images/Cloud_Surf.mp4';
 import webm from '../../images/Cloud_Surf.webm';
 import Login from '../Login/Login';
 import Logout from '../Login/Logout';
-import Car from '../Car/Car';
+
 
 
 const styles = {

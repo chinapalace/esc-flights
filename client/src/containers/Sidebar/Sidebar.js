@@ -19,7 +19,7 @@ class Sidebar extends Component {
     return (
       <Sider
 
-        width="440"
+        width="500"
         style={{
           backgroundColor: "rgb(255, 255, 255)",
         }}>

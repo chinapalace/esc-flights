@@ -20,10 +20,6 @@ class AppRouter extends Component {
           exact
           path={`/map`}
           component={asyncComponent(() => import('../Map/Map'))} />
-        <Route
-          exact
-          path={`/car`}
-          component={asyncComponent(() => import('../Car/Car'))} />
 
       </div>
     );

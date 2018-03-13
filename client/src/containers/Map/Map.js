@@ -1,7 +1,7 @@
 import React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-import Car from '../Car/Car';
+
 
 const Map = compose(
   withProps({
@@ -31,9 +31,8 @@ const Map = compose(
       <Marker position={{ lat: 38.751106, lng: -9.152584 }} />
       <Marker position={{ lat: 40.416775, lng: -3.703790 }} />
     </GoogleMap>
-    <Car />
   </div>
-  );
+);
 
 // class MyFancyComponent extends React.PureComponent {
 //   state = {

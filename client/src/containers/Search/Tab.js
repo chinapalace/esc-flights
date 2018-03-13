@@ -18,7 +18,7 @@ function TabContainer({ children, dir }) {
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 440,
+    width: 500,
   },
 });
 

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Layout,
   Form,
@@ -11,7 +11,7 @@ import {
   Select,
   Slider
 } from 'antd';
-const {Footer, Content} = Layout;
+const { Footer, Content } = Layout;
 
 const FormItem = Form.Item;
 const MonthPicker = DatePicker.MonthPicker;
@@ -70,7 +70,7 @@ class TimeRelatedForm extends Component {
       });
   };
   render() {
-    const {getFieldDecorator} = this.props.form;
+    const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
       labelCol: {
         xs: {
@@ -111,9 +111,9 @@ class TimeRelatedForm extends Component {
       <Layout>
         <h1
           style={{
-          textAlign: 'center',
-          padding: '20px'
-        }}>ESC Flights</h1>
+            textAlign: 'center',
+            padding: '20px'
+          }}>ESC Flights</h1>
         <Content style={{
           padding: '40px 20px'
         }}>
@@ -128,10 +128,10 @@ class TimeRelatedForm extends Component {
                 ]
               })(
                 <Input
-                  prefix={< Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
+                  prefix={< Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="Travel from"
                   setfieldsvalue={this.state.airport.origin}
-                  onChange={this.onInputChange}/>
+                  onChange={this.onInputChange} />
               )}
               {getFieldDecorator('arrival', {
                 rules: [
@@ -142,17 +142,17 @@ class TimeRelatedForm extends Component {
                 ]
               })(
                 <Input
-                  prefix={< Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
+                  prefix={< Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="Travel to"
                   setfieldsvalue={this.state.airport.destination}
-                  onChange={this.onInputChange}/>
+                  onChange={this.onInputChange} />
               )}
             </FormItem>
             <Row gutter={24}>
               <Col span={12}>
                 <FormItem label="Travel Dates">
-                  {getFieldDecorator('date-picker', config)(<DatePicker/>)}
-                  {getFieldDecorator('date-picker', config)(<DatePicker/>)}
+                  {getFieldDecorator('date-picker', config)(<DatePicker />)}
+                  {getFieldDecorator('date-picker', config)(<DatePicker />)}
                 </FormItem>
               </Col>
               <Col span={12}>
@@ -224,12 +224,12 @@ class TimeRelatedForm extends Component {
             </Row>
             <Row>
               <Col>
-                <Slider tipFormatter={formatter}/>
+                <Slider tipFormatter={formatter} />
               </Col>
             </Row>
           </Form>
         </Content>
-        <Footer/>
+        <Footer />
       </Layout>
     );
   }

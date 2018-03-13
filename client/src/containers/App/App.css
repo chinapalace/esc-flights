@@ -211,6 +211,7 @@ align-items: center;
   margin-top: auto;
   display: flex;
   height: 70vh;
+  padding-left: 30px;
 }
 
 .travel-selects {
