@@ -75,6 +75,7 @@ function SelectWrapped(props) {
 
   return (
     <Select
+      required={true}
       optionComponent={Option}
       noResultsText={<Typography>{'No results found'}</Typography>}
       arrowRenderer={arrowProps => {
@@ -244,6 +245,7 @@ class IntegrationReactSelect extends React.Component {
     return (
       <div className={classes.root}>
         <Input
+
           fullWidth
           inputComponent={SelectWrapped}
           inputProps={{

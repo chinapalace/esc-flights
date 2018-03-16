@@ -23,18 +23,21 @@ import FullWidthTabs from './Tab';
 
 const Option = Select.Option;
 
-const d = new Date();
-const date = d.getFullYear() + "-" + ("0" + d.getMonth() + 1).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
-console.log(date);
+let date = new Date();
+let dd = date.getDate() + 2;
+let mm = date.getMonth() + 1; //January is 0!
+let yyyy = date.getFullYear();
 
-
-function addDays(date, days) {
-  var result = new Date(date);
-  result.setDate(result.getDate() + days);
-  return result;
+if (dd < 10) {
+  dd = '0' + dd
 }
 
+if (mm < 10) {
+  mm = '0' + mm
+}
 
+date = mm + '/' + dd + '/' + yyyy;
+console.log(date);
 
 const styles = () => ({
   textField: {
@@ -83,7 +86,10 @@ class Search extends Component {
     this.onDepartChange = this
       .onDepartChange
       .bind(this);
+
+
   }
+
 
   onInputChange(event) {
     const target = event.target;
@@ -111,7 +117,10 @@ class Search extends Component {
     this.setState({ passengers: value })
   }
 
+
+
   onFormSubmit(event) {
+
     event.preventDefault();
     this.props.history.push('/flights-list');
     const request = {
@@ -145,38 +154,13 @@ class Search extends Component {
       .fetchFlights(request)
   }
 
-  getCodes(input) {
-    if (!input) {
-      return Promise.resolve({
-        options: [
-          { label: 'Delhi', value: 'DEL' },
-          { label: 'Mumbai', value: 'MUM' }
-        ]
-      });
-    }
-    const KEY = '97bfa12f-0eb0-4024-a08b-7983a27a1b0a';
-    const url = 'http://iatacodes.org/api/v6/autocomplete?query=' + input + '&api_key=' + KEY;
-
-    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-
-    return fetch(proxyUrl + url)
-      .then((response) => {
-        return response.json();
-      }).then((json) => {
-        var options = [];
-        json.each(['response']['airports'], (airport) => {
-          options.push({
-            label: airport['name'],
-            value: airport['code']
-          })
-        });
-        console.log(options);
-        return { options: options };
-      });
-  }
 
 
   render() {
+    const { origin, destination } = this.state;
+    const isEnabled =
+      origin.length > 0 &&
+      destination.length > 0;
     return (
       <div id="search-input" >
         <form onSubmit={this.onFormSubmit} autoComplete="off" className="search">
@@ -198,6 +182,7 @@ class Search extends Component {
           <div className="destination-details">
             <i style={{ marginTop: 10, marginRight: 10 }} className="material-icons md-dark md-inactive">flight_land</i>
             <SuggestSelect
+              required={true}
               placeholder="Travel to"
               style={{ width: 337, marginTop: 10 }}
               name="destination"
@@ -247,7 +232,7 @@ class Search extends Component {
 
           <div className="search-button">
 
-            <Button raised color="primary" type="submit">Search</Button>
+            <Button disabled={!isEnabled} raised color="primary" type="submit">Search</Button>
 
           </div>
         </form>

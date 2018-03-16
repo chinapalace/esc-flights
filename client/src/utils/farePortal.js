@@ -80,6 +80,9 @@ const farePortal = {
         console.log("adultFares", adultFares)
         response = mergedData.slice(0, 10);
         return response;
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   }
 }
