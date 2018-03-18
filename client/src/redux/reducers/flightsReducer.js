@@ -1,9 +1,11 @@
 import { FETCH_FLIGHTS } from '../actions/types';
 
-export default function (state = [], action) {
+export default function (state = {
+  data: []
+}, action) {
   switch (action.type) {
     case FETCH_FLIGHTS:
-      return action.payload || [];
+      return { ...state, data: action.payload };
   }
   return state;
 }

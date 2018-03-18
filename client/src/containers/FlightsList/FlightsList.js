@@ -5,6 +5,7 @@ import Icon from '../../components/icons/Icon';
 import moment from 'moment';
 import Header from './Header';
 import FLightCard from './FlightCard';
+import NoFlights from '../../components/NoFlights/NoFlights'
 import { createSkeletonProvider } from '@trainline/react-skeletor';
 
 const { Content } = Layout;
@@ -27,28 +28,34 @@ class FlightsList extends Component {
   }
 
   render() {
-    return (
-      <Content
-        id="flight-list"
-        style={{
-          padding: '0px 40px',
-          backgroundColor: 'whitesmoke',
-        }}>
-        <div> {this.props.flights.length > 0 &&
-          <div>
-            <h1>{this.renderGreeting()}</h1>
-            <h3>Here are the results based on your filters</h3>
-            <br />
-            <Header />
-            <br />
+    if (this.props.flights.length > 0) {
+      return (
+        <Content
+          id="flight-list"
+          style={{
+            padding: '0px 40px',
+            backgroundColor: 'whitesmoke',
+          }}>
+          <div> {this.props.flights.length > 0 &&
+            <div>
+              <h1>{this.renderGreeting()}</h1>
+              <h3>Here are the results based on your filters</h3>
+              <br />
+              <Header />
+              <br />
+            </div>
+          }
+            <div>
+              <FLightCard />
+            </div>
           </div>
-        }
-          <div>
-            <FLightCard />
-          </div>
-        </div>
-      </Content>
-    )
+        </Content>
+      )
+    } else {
+      return (
+        <NoFlights />
+      )
+    }
   }
 }
 
