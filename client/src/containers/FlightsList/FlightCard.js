@@ -21,7 +21,7 @@ class FlightCard extends Component {
   }
 
   render() {
-    return this.props.flights.map((flight, i) => {
+    return this.props.load.data.map((flight, i) => {
 
       return (
         <Card
@@ -61,8 +61,8 @@ class FlightCard extends Component {
   }
 }
 
-function mapStateToProps({ flights }) {
-  return { flights }
+function mapStateToProps({ flights, load }) {
+  return { flights, load }
 }
 
 export default connect(mapStateToProps)(FlightCard);

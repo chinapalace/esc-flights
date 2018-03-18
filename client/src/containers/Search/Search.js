@@ -18,6 +18,7 @@ import { withStyles } from 'material-ui/styles';
 import SuggestSelect from '../AutoSelect.js'
 
 import { fetchFlights } from '../../redux/actions/index'
+import { loadFlights } from '../../redux/actions/index'
 import FullWidthTabs from './Tab';
 
 
@@ -151,16 +152,14 @@ class Search extends Component {
 
     this
       .props
-      .fetchFlights(request)
+      .loadFlights(request);
+
   }
 
 
 
   render() {
-    const { origin, destination } = this.state;
-    const isEnabled =
-      origin.length > 0 &&
-      destination.length > 0;
+
     return (
       <div id="search-input" >
         <form onSubmit={this.onFormSubmit} autoComplete="off" className="search">
@@ -232,7 +231,7 @@ class Search extends Component {
 
           <div className="search-button">
 
-            <Button disabled={!isEnabled} raised color="primary" type="submit">Search</Button>
+            <Button raised color="primary" type="submit">Search</Button>
 
           </div>
         </form>
@@ -243,7 +242,7 @@ class Search extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    fetchFlights
+    loadFlights, fetchFlights
   }, dispatch);
 }
 

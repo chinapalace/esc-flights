@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_FLIGHTS } from './types';
+import { FETCH_USER, FETCH_FLIGHTS, LOAD_FLIGHTS } from './types';
 import farePortal from '../../utils/farePortal';
 
 
@@ -21,4 +21,18 @@ export const fetchFlights = (body) => async dispatch => {
   console.log("res", res);
 
   dispatch({ type: FETCH_FLIGHTS, payload: res })
+}
+
+export function loadFlights(body) {
+  return function (dispatch) {
+    dispatch({ type: "ACTION_PENDING" });
+    farePortal.api(body)
+      .then((response) => {
+        dispatch({ type: "ACTION_SUCCESS", payload: response })
+      })
+      .catch((err) => {
+        dispatch({ type: "ACTION_FAIL", payload: err });
+      });
+  }
+
 }

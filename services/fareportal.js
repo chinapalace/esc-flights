@@ -1,7 +1,3 @@
-import axios from 'axios';
-import { normalize, schema } from 'normalizr';
-
-
 const farePortal = {
 
   api: function (body) {
@@ -81,8 +77,8 @@ const farePortal = {
         response = mergedData.slice(0, 10);
         return response;
       })
-
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 }
-
-export default farePortal;

@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { Layout } from 'antd';
-import bkg from '../../images/no_flights_background.png'
 
 const { Content } = Layout;
 
-function NoFlights(props) {
+function LoadingFlights(props) {
   return (
     <Content
       style={{
@@ -12,7 +11,7 @@ function NoFlights(props) {
         height: '100vh'
       }}
     >
-      <div id="no_flights" style={{
+      <div id="loading" style={{
         position: 'relative',
         textAlign: 'center',
         color: 'white',
@@ -33,4 +32,4 @@ function NoFlights(props) {
   )
 }
 
-export default NoFlights;
+export default LoadingFLights;
