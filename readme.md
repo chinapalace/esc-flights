@@ -89,3 +89,6 @@ Express handles the routing for our Auth flow.
 
 ![Screen Shot](/images/auth_flow.png?raw=true)
 
+### Links 
+  *[Portfolio](www.justinmclaren.com)
+  *[LinkedIn](https://www.linkedin.com/in/justin-mclaren/)
