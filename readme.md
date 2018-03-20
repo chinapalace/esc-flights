@@ -6,8 +6,10 @@ ESC FLIGHTS
 ======================
 
 This reposity contains the source code for www.escflights.com 
-ESC Flights is a fully functional prototype of <a src="https://www.behance.net/gallery/45904083/Google-Flights-Concept">this</a> popular concept from Behance
-The site includes live flight search, Google login, a responsive user interface, and Google Maps integration
+
+ESC Flights is a fully functional prototype of 
+<a src="https://www.behance.net/gallery/45904083/Google-Flights-Concept">this</a> popular concept from Behance.
+The site includes live flight search, Google login, a responsive user interface, and Google Maps integration.
 
 ## Table of Contents
 
@@ -42,7 +44,24 @@ Here's the component FlightListSuccess that the FlightList parent component (fro
 
 In the previous example, we conditionally rendered components based on the state of the application. ESC Flights uses the Redux library to maintain predictable state. Redux creates a 'store' which is a Javascript object that lives outside our application and holds application state at all times. 
 
+In the case of our FlightList component, we need to know the state of the search request made to the Fareportal API so we can render the proper component. 
 
+First we define the shape of our App's state as a JavaScript object. Our state contains the status of the search request to the Fareportal API as well as an empty array that will hold the data response from the API.
+
+![Screen Shot](/images/state.png?raw=true)
+
+When a user submits their search criteria, the Search component calls the loadFlights() action creator. 
+
+![Screen Shot](/images/LoadFlights_creator.png?raw=true)
+
+First the action creator dispatches an action of type "ACTION_PENDING" before sending the request to the Fareportal API.
+
+![Screen Shot](/images/action_pending.png?raw=true)
+
+The action is funneled into the loadFlights reducer, which contains a switch statement to determine what type of action it is. Reducers in Redux specifies how the application's state changes in response to actions sent to the store. In this case, "ACTION_PENDING", we use the Javascript spread (...) operator to create a new state object 
+with an updated requestPending property set to true. __It is imperative in redux to never mutate the state object and instead return a new copy of the object with updated properties__. 
+
+![Screen Shot](/images/Action_pending_reducer.png?raw=true)
 
 
 
