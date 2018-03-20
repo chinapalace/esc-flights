@@ -19,7 +19,7 @@ The site includes live flight search, Google login, a responsive user interface,
   - [React](#react)
   - [Redux](#redux)
   - [Node/Express](#node/express)
-  - [Google Oauth with Passport](#oauth)
+  - [Google Oauth 2.0 with Passport](#oauth)
 - [Links](#links)
 
 ## Technologies 
@@ -69,7 +69,23 @@ The point of maintaining our state object in Redux is to easily allow our compon
 
 ![Screen Shot](/images/redux_connect.png?raw=true)
 
-Now our flights list component can choose to display a loading icon, a flight list, or alert the user of an unsuccessful search (see below) based on our app's state.
+Now our flights list component can easily choose to display a loading icon, a flight list, or alert the user of an unsuccessful search (see below) based on our app's state.
 
 ![Screen Shot](/images/no_flights.png?raw=true)
+
+### Node/Express
+
+ESC Flights lives on an Express server running on Nodejs. With Node and Express its easy to create backend servers for production, development, and testing enviroments as well as hit our Google Auth API and connect to a MongoDB database, and all of this written in JavaScript.
+
+![Screen Shot](/images/backend.png?raw=true)
+
+### Google Oauth 2.0 with Passport
+
+Passport provides an API that makes it somewhat simpler to connect to the Google+ API to access user data with the Oauth 2.0 protocal. The end result is that our user is able to log into our app with their Google login information. 
+
+![Screen Shot](/images/passport.png?raw=true)
+
+Express handles the routing for our Auth flow. 
+
+![Screen Shot](/images/auth_flow.png?raw=true)
 
