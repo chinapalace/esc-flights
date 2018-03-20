@@ -27,7 +27,6 @@ export default class Header extends Component {
             <div> <span> <b>Track Prices</b> <a href="#">Learn More</a></span>
               <p id="no-margin">Recieve emails with prices changes and travel tips for this trip.</p></div>
             <div className="toggle"><Toggle /></div>
-
           </div>
         </div>
       </div>
