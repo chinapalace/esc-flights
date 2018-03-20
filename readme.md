@@ -8,8 +8,10 @@ ESC FLIGHTS
 This reposity contains the source code for www.escflights.com 
 
 ESC Flights is a fully functional prototype of 
-<a src="https://www.behance.net/gallery/45904083/Google-Flights-Concept">this</a> popular concept from Behance.
+[this]("https://www.behance.net/gallery/45904083/Google-Flights-Concept") popular concept from Behance.
 The site includes live flight search, Google login, a responsive user interface, and Google Maps integration.
+
+![Screen Shot](/images/escflights.png?raw=true)
 
 ## Table of Contents
 
@@ -63,7 +65,11 @@ with an updated requestPending property set to true. __It is imperative in redux
 
 ![Screen Shot](/images/Action_pending_reducer.png?raw=true)
 
+The point of maintaining our state object in Redux is to easily allow our components to have access to this state. Redux makes it simple to map our state to props which can easily be passed through components.  
 
+![Screen Shot](/images/redux_connect.png?raw=true)
 
+Now our flights list component can choose to display a loading icon, a flight list, or alert the user of an unsuccessful search (see below) based on our app's state.
 
+![Screen Shot](/images/no_flights.png?raw=true)
 
