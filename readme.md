@@ -20,7 +20,7 @@ The site includes live flight search, Google login, a responsive user interface,
   - [Redux](#redux)
   - [Node/Express](#node/express)
   - [Google Oauth 2.0 with Passport](#oauth)
-- [Links](#links)
+
 
 ## Technologies 
 
@@ -89,6 +89,3 @@ Express handles the routing for our Auth flow.
 
 ![Screen Shot](/images/auth_flow.png?raw=true)
 
-### Links 
-  *[Portfolio](www.justinmclaren.com)
-  *[LinkedIn](https://www.linkedin.com/in/justin-mclaren/)
