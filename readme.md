@@ -1,5 +1,5 @@
 <a href="http://www.escflights.com/">
-  <img src="<img src="https://aimeos.org/fileadmin/template/icons/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="60" />" alt="Aimeos logo" title="Aimeos" align="right" height="60" />
+  <img src="https://aimeos.org/fileadmin/template/icons/logo.png" alt="" title="Aimeos" align="right" height="60" />" alt="Aimeos logo" title="Aimeos" align="right" height="60" />
 </a>
 
 ESC FLIGHTS
